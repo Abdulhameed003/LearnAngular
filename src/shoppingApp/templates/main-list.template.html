@@ -1,0 +1,9 @@
+<div>These are our default products</div>
+<ul>
+    <li ng-repeat="item in list.items" 
+        ui-sref="main-list.item-details({itemId: $index})">
+        {{item.quantity}} of {{item.name}}
+    </li>
+</ul>
+
+<ui-view></ui-view>

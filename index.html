@@ -1,0 +1,34 @@
+<html ng-app="shoppingApp">
+    <head>
+        <link rel="stylesheet" href="/css/style.css"></link>
+        <title>Shopping Store</title>
+    </head>
+    <body>
+        <h1>Welcome to our shopping Store. This is a no cookie Store.</h1>
+        
+        <button ui-sref="home">Home</button>
+        <button ui-sref="register">Register</button>
+        <button ui-sref="shop">Shop</button>
+        <button ui-sref="main-list">Product List</button>
+        <br>
+        
+        <ui-view></ui-view>
+    </body>
+
+    <script src="/libs/jquery.min.js"></script>
+    <script src="/libs/angular.min.js"></script>
+    <script src="/libs/angular-ui-router.min.js"></script>
+
+
+    <script src="/src/shoppingApp/shoppingApp.module.js"></script>
+    <script src="/src/spinner/spinner.module.js"></script>
+ 
+    <script src="/src/shoppingApp/shoppingApp.component.js"></script>
+    <script src="/src/shoppingApp/shoppingApp.factory.js"></script>
+    <script src="/src/shoppingApp/shoppingApp.controller.js"></script>
+    <script src="/src/shoppingApp/shoppingApp.service.js"></script>
+
+    <script src="/src/spinner/spinner.component.js"></script>
+    
+    <script src="/src/routing/routing.js"></script>
+</html>

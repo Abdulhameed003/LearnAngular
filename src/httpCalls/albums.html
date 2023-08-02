@@ -1,0 +1,20 @@
+<html ng-app="albumApp">
+    <head>
+        <script src="/libs/angular.min.js"></script>
+        <script src="album-app.js"></script>
+        <title>Albums App </title>
+    </head>
+    <body>
+        <h2>Albums App using $http Service</h2>
+        <div ng-controller="albumController as list">
+            <h4>List of Albums</h4>
+            <ul>
+                <li ng-repeat="album in list.albums">
+                    (<a href="" ng-click="list.getAlbumById(album.id)">{{album.id}}</a>)
+                    {{album.title}}
+                </li>
+            </ul>
+        </div>
+
+    </body>
+</html>

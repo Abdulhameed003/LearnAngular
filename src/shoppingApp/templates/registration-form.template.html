@@ -1,0 +1,48 @@
+<h3>Simple Form Validation</h3>
+<fieldset>
+    <legend>Registration Form</legend>
+    <form name="regForm" novalidate>
+        <input type="text" name="username" placeholder="Pick a Username"
+            ng-model="reg.user.userName" required minlength="4" ng-maxlength="10">
+            {{reg.user.userName}}
+        <span ng-if="(regForm.userName.$error.required || 
+                regForm.userName.$error.minlength) && regForm.userName.$touched">
+            Username is required and must be atleast 4 characters long.
+        </span>
+        <span ng-if="regForm.userName.$error.ng-maxlength && 
+            regForm.Username.$touched">
+            Username should not be longer than 10 characters.
+        </span>
+        <br>
+
+        <input type="email" name="email" ng-model="reg.user.email" 
+            placeholder="Email" required>
+        <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Email must be a valid format: eg. name@domin.com
+        </span>
+        <br>
+
+        <input type="text" name="phone" ng-model="reg.user.phone" 
+            placeholder="Phone ###-###-####"
+            pattern="(\d{3})-(\d{3})-(\d{4})">
+        <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+            Phone must be in the format ###-###-####
+        </span>
+        <br>
+
+        <button ng-click="reg.submit()" ng-disabled="regForm.$invalid">
+            Submit
+        </button>
+
+        <div style="margin-top: 10px;">
+            Form valid: {{regForm.$valid}}
+        </div>
+    </form>
+</fieldset>
+
+<div class="info" ng-if="reg.completed">
+    userName: {{reg.user.userName}} <br>
+    email: {{reg.user.email}} <br>
+    phone: {{reg.user.phone}} 
+</div>
+

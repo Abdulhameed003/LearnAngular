@@ -1,0 +1,64 @@
+
+<h1>Implementation using Service.</h1>
+<h4>Creating a single instance of a service and implemeting Async</h4>
+<div ng-controller='addShoppingItemController as itemAdder'>
+    <item-input on-add-item="itemAdder.addToCart(item)"></item-input>
+</div>
+
+<div ng-controller='showShoppingItemController as showItems'>
+    <shopping-list-item
+        items="showItems.items"
+        title="shopping List with Different Controllers"
+        on-remove="showItems.removeItem(index)">
+    </shopping-list-item>
+</div>
+
+<div>
+    <h1>Implementation using Factory. (.factory)</h1>
+    <h4>creating services related to specific controller need</h4>
+    <div ng-controller='shoppingLimitedController as list'>
+        <div>
+            <item-input on-add-item="list.addToCart(item);"></item-input>
+        </div>
+        <shopping-list-item 
+            items="list.items" 
+            title={{list.title}} 
+            on-remove="list.removeItem(index)">           
+        </shopping-list-item>
+        <div class="listlimit" ng-show="list.error">Error:{{list.warning}}</div>
+    </div>
+
+    <div ng-controller='shoppingUnlimitedController as list'>  <!-- parent controller -->
+        <div>
+            <item-input  on-add-item="list.addToCart(item);"></item-input>
+        </div>
+        <span>{{list.lastRemoved}}</span>
+        <shopping-list-item 
+            id="list1"
+            items="list.items" 
+            title={{list.title}} 
+            on-remove="list.removeItem(index)"> <!--pass a delegate of the remove func to the on-remove -->
+
+            <!-- wat is transclusded into the shopping-list-item directives i.e pass the below template
+                    into the directive defined. -->
+            <span class="warning"> WARNING! WARNING! {{list.warning}}</span>
+        </shopping-list-item>
+
+        <shopping-list-item 
+            id="list2"
+            items="list.items" 
+            title={{list.title}} 
+            on-remove="list.removeItem(index)"> <!--pass a delegate of the remove func to the on-remove -->
+            
+            <!-- wat is transclusded into the shopping-list-item directives i.e pass the below template
+                    into the directive defined -->
+            <div>
+                <div class="title">OH! AN HORROR!</div>
+                <div>{{list.warning}}</div>
+            </div>
+        </shopping-list-item>
+        <div class="listlimit" ng-show="list.error">Error:{{list.warning}}</div>
+    </div>
+    
+    <spinner-loader></spinner-loader>
+</div>

@@ -1,0 +1,39 @@
+<html ng-app="ShoppingCart">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="app.js"></script>
+        <title>Assignment 2: Shopping Check Off</title>
+    </head>
+    <body>
+        <div ng-controller='shoppingCartController as shopCart'>
+            <div>
+                <h3>Items to Buy</h3>
+                <div ng-hide="shopCart.toBuyList.length === 0">
+                    <ol>
+                        <li ng-repeat="item in shopCart.toBuyList">
+                            Buy {{item.quantity}} {{item.name}}
+                            <button ng-click="shopCart.buy($index)">Buy</button>
+                        </li>
+                    </ol>
+                </div>
+               <div ng-show="shopCart.toBuyList.length === 0">
+                    Everything is bought!
+               </div>
+            </div>
+
+            <div>
+                <h3>Item Already Bought</h3>
+                <div ng-show="shopCart.boughtList.length > 0">
+                    <ol >
+                        <li ng-repeat="item in shopCart.boughtList"> 
+                            Bought {{item.quantity}} {{item.name}}
+                        </li>
+                    </ol>
+                </div>
+                <div ng-hide="shopCart.boughtList.length > 0 ">
+                    Nothing Bought Yet!
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

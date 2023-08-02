@@ -1,0 +1,55 @@
+<html ng-app="app">
+    <head>
+        <script src="angular.min.js"></script>
+        <script src="app.js"></script>
+        <title>Angular Class</title>
+    </head>
+    <body>
+        <h1>Hell Guys this is an Angular Learning Session.</h1>
+        <h2>A name calculator</h2>
+        <div ng-controller="firstController as parent">
+            <div>
+                <label for="name">Student Name:</label>
+                <input  type="text" ng-model="name" ng-keyup="displayTotalNameValue();">
+                <br>
+                Cost: {{transportCost | currency : "PG" : 5}}
+                <br>
+                Original : {{upper()}}
+                <br>
+                Love: {{likeToLove()}}
+                <br>
+                Truth: {{likeToLove() | replace : 'Javascript' : 'C#' | uppercase}}
+
+                <div>
+                    <input type="text" ng-model="search">
+                    <ul>
+                        <!-- Applying filter to array of element angular way -->
+                        <li ng-repeat="item in shopList1 | filter : search">{{item}}</li> 
+                    </ul>
+
+                    <br>
+                    
+                    <ul>
+                        <li ng-repeat="item in shopList2">{{$index + 1}} Buy {{item.quantity}} of {{item.name}}</li>
+                    </ul>
+
+                    <input type="text" ng-model="itemName" placeholder="item name">
+                    <input type="text" ng-model="itemQuantity" placeholder="item quantity">
+                    <button ng-click="addItem();">Add to List</button>
+                </div>
+
+                <!-- <div ng-controller="secondController as child">
+                    {{parent.value}}
+                    <br>
+                    {{child.value}}
+                </div> -->
+            </div>
+            <div>Total Numeric value of person's name is: {{totalNameValue}}</div>
+            {{parent.value}}
+
+            <div ng-controller="secondController as child"> {{child.value}}</div>
+        </div>
+
+       
+    </body>
+</html>
